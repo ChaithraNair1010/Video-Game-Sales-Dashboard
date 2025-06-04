@@ -64,8 +64,9 @@ An end-to-end Business Intelligence (BI) project to analyze and visualize video 
 Features KPIs like:
 - Total Global Sales
 - Total Games
-- Total Platforms  
-Includes a line chart to display **Sales Trend Over Years**. Serves as the landing page with a left-hand **page navigator**.
+- Total Platforms
+- Total Publishers
+Includes a line chart to display **Sales Trend Over Years**. Serves as the landing page with a **page navigator** at the bottom.
 
 ---
 
