@@ -67,6 +67,8 @@ Features KPIs like:
 - Total Platforms
 - Total Publishers
 Includes a line chart to display **Sales Trend Over Years**. Serves as the landing page with a **page navigator** at the bottom.
+<img width="488" alt="image" src="https://github.com/user-attachments/assets/ae3041c8-ebdc-4b42-9721-358e1f1258a8" />
+
 
 ---
 
@@ -75,6 +77,8 @@ Visualizes:
 - Top 5 Games
 - Top 5 Platforms  
 Region selection via **button-based slicer**. Highlights dominant franchises and platforms in each region for market-specific insight.
+<img width="482" alt="image" src="https://github.com/user-attachments/assets/8d02e877-7034-4c92-bf7e-575992d8efcc" />
+
 
 ---
 
@@ -82,6 +86,7 @@ Region selection via **button-based slicer**. Highlights dominant franchises and
 Built using **unpivoted data**.  
 Allows dynamic filtering of genre-wise sales using a **single radar chart** controlled by a region slicer.  
 Ideal for interactive and scalable analysis.
+<img width="485" alt="image" src="https://github.com/user-attachments/assets/f717d22c-fa32-420a-a925-61ab95df2e8b" />
 
 ---
 
