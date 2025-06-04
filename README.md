@@ -136,7 +136,5 @@ While bookmarks provide structure and control, slicers offer a better UX for gro
 
 ---
 
-Feel free to clone, explore, and build upon this project!
-
-> _For questions or suggestions, reach out via GitHub Issues._
+Power BI link: https://app.powerbi.com/links/NgoHVUre1l?ctid=d8073599-e357-41ee-b7d8-7716dfb6b417&pbi_source=linkShare
 
