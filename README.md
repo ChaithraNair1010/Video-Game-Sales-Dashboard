@@ -28,21 +28,21 @@ An end-to-end Business Intelligence (BI) project to analyze and visualize video 
 
 ## 🔄 ETL Process Overview
 
-### ✅ Step 1: Upload to S3
+### Step 1: Upload to S3
 - Created a bucket: `power-bi-project-aws`
 - Uploaded `video_games.csv`
 
-### ✅ Step 2: AWS Glue Configuration
+### Step 2: AWS Glue Configuration
 - Created Glue database: `powerbi_test_aws_db`
 - Setup crawler: `power-bi-crawler`
 - Assigned custom IAM role for permission
 - Generated a metadata table
 
-### ✅ Step 3: Query with Athena
+### Step 3: Query with Athena
 - Previewed records via Athena using SQL
 - Validated schema from Glue Data Catalog
 
-### ✅ Step 4: Connect to Power BI
+### Step 4: Connect to Power BI
 - Installed **Simba ODBC** driver
 - Created DSN and authenticated via IAM credentials
 - Pulled in dataset for modeling and cleaning
@@ -81,13 +81,13 @@ Region selection via **button-based slicer**. Highlights dominant franchises and
 ### 🔹 Page 3 – **Radar Chart (Slicer-Based Approach)**
 Built using **unpivoted data**.  
 Allows dynamic filtering of genre-wise sales using a **single radar chart** controlled by a region slicer.  
-✅ Ideal for interactive and scalable analysis.
+Ideal for interactive and scalable analysis.
 
 ---
 
 ### 🔹 Page 4 – **Radar Chart (Bookmark Approach)**
 Contains five separate radar charts — one per region — navigated via **bookmark buttons**.  
-✅ Useful for static presentations and storytelling when layout control is preferred.
+Useful for static presentations and storytelling when layout control is preferred.
 
 ---
 
