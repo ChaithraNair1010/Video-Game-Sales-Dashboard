@@ -1,112 +1,136 @@
-# Video-Game-Sales-Dashboard
-Power BI Dashboard
+# 🎮 Global Video Game Sales Dashboard
 
-🎮 Power BI Video Game Sales Dashboard
-An end-to-end BI solution that demonstrates how to extract, transform, and visualize video game sales data using AWS services and Power BI. The report explores sales trends, regional preferences, and genre popularity using dynamic and interactive visuals.
+An end-to-end Business Intelligence (BI) project to analyze and visualize video game sales data using AWS (S3, Glue, Athena), Power BI, and ODBC integration. The dashboard enables insights into global and regional sales performance by genre, game, and platform.
 
-⚙️ Tools & Technologies Used
-Tool/Service	Purpose
-AWS S3	Cloud storage for the raw video_games.csv file
-AWS Glue	Crawler and Data Catalog metadata management
-AWS IAM	Role-based access control for Glue & Athena
-Amazon Athena	SQL query interface for structured data in S3
-Simba ODBC	Connector for integrating Athena with Power BI
-Power BI	Data modeling, transformation & storytelling
+---
 
-📁 Dataset
-Name: video_games.csv
+## ⚙️ Tools & Technologies Used
 
-Size: 16,577 records
+| Tool/Service     | Purpose                                      |
+|------------------|----------------------------------------------|
+| **AWS S3**        | Storage for raw CSV dataset                 |
+| **AWS Glue**      | Crawler and metadata cataloging             |
+| **AWS IAM**       | Role-based access for secure ETL            |
+| **Amazon Athena** | Query engine for data stored in S3          |
+| **Simba ODBC**    | Connector to bring Athena data into Power BI|
+| **Power BI**      | Data transformation and interactive visuals |
 
-Source: Uploaded to Amazon S3
+---
 
-Content: Regional sales data, platform, genre, year of release, and publisher for various video games.
+## 📁 Dataset
 
-🔄 ETL Process Overview
-1. Upload to S3
-Created S3 bucket power-bi-project-aws
+- **Name:** `video_games.csv`
+- **Source:** Uploaded to Amazon S3
+- **Records:** 16,577
+- **Includes:** Title, Genre, Platform, Year, Publisher, Regional Sales
 
-Uploaded video_games.csv
+---
 
-2. AWS Glue Configuration
-Created Glue Database: powerbi_test_aws_db
+## 🔄 ETL Process Overview
 
-Defined Glue Crawler: power-bi-crawler
+### ✅ Step 1: Upload to S3
+- Created a bucket: `power-bi-project-aws`
+- Uploaded `video_games.csv`
 
-Configured with custom IAM role
+### ✅ Step 2: AWS Glue Configuration
+- Created Glue database: `powerbi_test_aws_db`
+- Setup crawler: `power-bi-crawler`
+- Assigned custom IAM role for permission
+- Generated a metadata table
 
-Successfully extracted schema and registered metadata
+### ✅ Step 3: Query with Athena
+- Previewed records via Athena using SQL
+- Validated schema from Glue Data Catalog
 
-3. Athena Querying
-Verified metadata in AWS Data Catalog
+### ✅ Step 4: Connect to Power BI
+- Installed **Simba ODBC** driver
+- Created DSN and authenticated via IAM credentials
+- Pulled in dataset for modeling and cleaning
 
-Previewed and tested queries using Athena SQL editor
+---
 
-4. Power BI Integration
-Installed Simba ODBC driver
+## 🧽 Data Cleaning Highlights
 
-Created DSN with appropriate authentication
+- Replaced null values in sales columns with 0
+- Converted sales figures from millions to unit counts
+- Fixed Year column issues by isolating invalid entries, validating via Excel, and reintegrating clean rows
+- Applied **Power Query transformations** and unpivoted regional sales for dynamic slicing
 
-Loaded data into Power BI and performed data transformation using Power Query
+---
 
-Authentication Used for ODBC:
+## 📊 Report Pages & Visualizations
 
-Username: IAM Access Key ID
+### 🔹 Page 1 – **Overview Dashboard**
+Features KPIs like:
+- Total Global Sales
+- Total Games
+- Total Platforms  
+Includes a line chart to display **Sales Trend Over Years**. Serves as the landing page with a left-hand **page navigator**.
 
-Password: IAM Secret Access Key
+---
 
-📊 Visualizations & Report Pages
-🔹 Page 1 – Global Overview
-A high-level dashboard landing page with sleek dark aesthetics. It features KPIs like:
+### 🔹 Page 2 – **Regional Gaming Leaders**
+Visualizes:
+- Top 5 Games
+- Top 5 Platforms  
+Region selection via **button-based slicer**. Highlights dominant franchises and platforms in each region for market-specific insight.
 
-Total Global Sales
+---
 
-Total Games Published
+### 🔹 Page 3 – **Radar Chart (Slicer-Based Approach)**
+Built using **unpivoted data**.  
+Allows dynamic filtering of genre-wise sales using a **single radar chart** controlled by a region slicer.  
+✅ Ideal for interactive and scalable analysis.
 
-Number of Platforms
-And a line chart depicting Sales Trend Over Years. This page sets the stage for exploring the rest of the report and includes a left-aligned page navigator for smooth multi-page transitions.
+---
 
-🔹 Page 2 – Regional Gaming Leaders: Top Games & Platforms
-This page presents region-wise top 5 games and platforms, driven by a slicer. Users can toggle between regions (e.g., North America, Japan) to see local market champions. This supports regional strategy decisions, localization planning, and trend analysis across platforms and franchises.
+### 🔹 Page 4 – **Radar Chart (Bookmark Approach)**
+Contains five separate radar charts — one per region — navigated via **bookmark buttons**.  
+✅ Useful for static presentations and storytelling when layout control is preferred.
 
-🔹 Page 3 – Dynamic Radar Chart (Slicer & Unpivoted Data)
-A single radar chart visual powered by unpivoted sales data and controlled via a slicer. Users select a region, and the chart updates dynamically to show genre popularity in that region. This approach reduces visual clutter and provides an interactive, scalable solution ideal for business users.
+---
 
-🔹 Page 4 – Radar Charts via Bookmarks (Static Comparison)
-An alternate take on genre visualization using five separate radar charts, one for each region. Bookmark navigation allows switching between charts. This is helpful for stakeholders who prefer side-by-side layout control or require static visual storytelling for presentations.
+## 📊 Charting Strategy: Bookmark vs Slicer
 
-🧠 Business-Driven Charting Strategy
-Radar Chart Implementation: Bookmarks vs. Slicer
-Criteria	Bookmark Approach	Slicer + Unpivot Approach
-📐 Layout Control	Strong (individual layout)	Single dynamic visual
-🧩 Scalability	Limited (manual per region)	High (easily adapts to more regions)
-🎯 Best For	Static reporting, demos	Interactive dashboards
-🛠 Maintenance	Tedious as scope expands	Easier to manage and extend
+| Feature                 | Bookmark Charts      | Slicer + Unpivot        |
+|------------------------|----------------------|--------------------------|
+| Visual Count           | Multiple visuals     | One visual               |
+| User Interactivity     | Low                  | High                     |
+| Maintenance            | Tedious              | Scalable & flexible      |
+| Best For               | Storytelling/presentations | Exploratory analysis |
 
-✅ Conclusion:
-Both implementations serve distinct purposes. Bookmarks provide layout control and visual separation, which is ideal for presentations. However, the slicer approach is more dynamic, scalable, and user-centric, aligning better with evolving business needs.
+**🔍 Insight:**  
+While bookmarks provide structure and control, slicers offer a better UX for growing datasets and evolving needs.
 
-🧼 Data Cleaning & Fixes
-Null Handling: Replaced null in sales columns with 0 (as 0 was the most frequent value)
+---
 
-Unit Conversion: Sales originally in millions converted to units (× 1,000,000)
+## 🧠 Key Learnings
 
-Year Column Issue:
+- Importance of IAM, bucket policies & schema matching in AWS pipelines
+- Power Query is powerful for transformation and error isolation
+- Unpivoting enables scalable, user-driven filtering in reports
+- Effective storytelling in dashboards depends on audience needs
 
-Errors occurred when converting Year to numeric due to dirty values from Athena.
+---
 
-Segregated error rows into a Year Errors table.
+## 🚀 Future Improvements
 
-Validated using Excel VLOOKUP against original CSV.
+- Publish to Power BI Service
+- Enable scheduled refresh via Athena
+- Incorporate predictive analytics (e.g., future genre trends)
+- Add tooltips, page navigation icons, and usage metrics
 
-Fixed manually and re-integrated valid values back into reporting dataset.
+---
 
-🧠 Key Learnings
-IAM configuration and file path setup in AWS are crucial for successful ETL pipelines.
+## 📎 Files Included
 
-Handling schema mismatches and partial import errors is a real-world necessity.
+- `Video Games Report.pbix` – Final Power BI Report  
+- `video_games.csv` – Raw dataset  
+- `README.md` – Project overview and documentation
 
-Visual strategy must be tied to business user behavior — static vs interactive consumption.
+---
 
-Power Query is powerful for shaping and merging multi-source datasets in Power BI.
+Feel free to clone, explore, and build upon this project!
+
+> _For questions or suggestions, reach out via GitHub Issues._
 
